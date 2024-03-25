@@ -2,7 +2,7 @@ body
 {
     margin:0;
     padding:0;
-    background-image: url("http://ws.mss.icics.ubc.ca/~cics516/cur/hw/hw2/images/background.png");
+    background-image: url("images/moviebg.png");
 	font-family: Verdana, Geneva, sans-seri;
 	font-size: 8pt;	
 }
@@ -26,6 +26,7 @@ body
 {
 	margin-left: auto;
     margin-right: auto;
+    background-color: #EEEEEE;
 	width: 800px;
 	border: 4px solid grey;
 	border-radius: 20px;
@@ -64,7 +65,7 @@ body
 
 #RottenAlign
 {
-    background-image:url("http://ws.mss.icics.ubc.ca/~cics516/cur/hw/hw2/images/rbg.png");
+    background-image: url('images/rottenlargebg.png');
     font-size: 48pt;
     color: red;
     font-weight: bold;
@@ -81,15 +82,16 @@ body
 
 .ReviewColumn
 {
-    width: 47%;
+    width: 50%;
+    height: 700px;
     float: left;
-    margin-left: 2%;
+    margin: 0%;
 }
 
 .Review
 {
     font-size: 8pt;
-    background-color: #E8DC9B;
+    background-color: white;
     font-weight: bold;
     border: 2px solid grey;
     border-radius: 10px;
@@ -114,9 +116,10 @@ body
 #ReviewCounts
 {
     background-color:#A2B964;
-    padding:5px;
+    font-size: 15px;
+    padding:15px;
     position: absolute;
-	bottom:-128px;
+	bottom:-145px;
 	width: 550px;
 	text-align: center;
 	
