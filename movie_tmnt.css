@@ -19,7 +19,7 @@ body
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 2;
 }
 
 #Banner img {
@@ -47,7 +47,7 @@ body
 	border-radius: 20px;
 	position: relative;	
 	overflow: hidden;
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 5px gray;
 
 }
 
