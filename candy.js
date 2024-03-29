@@ -22,7 +22,7 @@
   // TODO: complete the code below.
   // "replace first candy crush"
 //   function replaceFirstIcon() {
-//     if () {
+//     if (id = "icons") {
       
       
       
