@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+  Starter HTML for Skittles Game
+  -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Skittles Game</title>
+    <script src="skittles.js"></script>
+    <link rel="stylesheet" href="skittles.css">
+</head>
+
+<body>
+    <header>
+        <h1>How many <span id="color"></span>Skittles are in the jar?</h1>
+    </header>
+    <main>
+        <div id="jar">
+        </div>
+
+        <!-- UI Controls -->
+        <article id="game-ui" class="hidden">
+            <p>
+                <label>Your Guess: <input type="number"></label>
+                <button id="guess">Guess</button>
+            </p>
+            <p>Guesses so far: <span id="guess-count">0</span></p>
+            <p id="results"></p>
+
+            <!-- Button for showing game options and hiding any previous game view -->
+            <button id="new-game" class="hidden">New Game</button>
+        </article>
+
+        <article id="game-setup">
+            <p id="color-options">
+                How many colors do you want in your rainbow?
+                <label><input type="radio" name="color-count" value="3" checked> 3</label>
+                <label><input type="radio" name="color-count" value="6"> 6</label>
+                <label><input type="radio" name="color-count" value="9"> 9</label>
+            </p>
+            <!-- Button for starting new game with selected color -->
+            <button id="start">Start!</button>
+        </article>
+    </main>
+</body>
+
+</html>

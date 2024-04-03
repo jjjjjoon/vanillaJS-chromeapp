@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="speedreader.js" type="text/javascript"></script>
+    <link href="speedreader.css" rel="stylesheet" />
+    <title>SpeedReader</title>
+</head>
+<body>
+    <h1 id="title">SpeedReader</h1>
+
+    <div id="outputBox"></div>
+
+    <div id="controls">
+
+        <fieldset class="control">
+            <legend>Play Controls:</legend>
+            <button id="startBt" class="toggle">Start</button> <!-- 비활성화된 예시 -->
+            <button id="stopBt" class="toggle">Stop</button>
+        </fieldset>
+
+        <fieldset class="control">
+            <legend>Speed:</legend>
+            <select id="speedBt">
+                <option value="50">50 wpm</option>
+                <option value="300">300 wpm</option>
+                <option value="350" selected>350 wpm</option>
+                <option value="400">400 wpm</option>
+                <option value="450">450 wpm</option>
+                <option value="500">500 wpm</option>
+            </select>
+        </fieldset>
+
+        <fieldset class="control">
+            <legend>Size:</legend>
+            <label><input type="radio" name="sizeBt" value="Medium" checked> Medium</label>
+            <label><input type="radio" name="sizeBt" value="Big"> Big</label>
+            <label><input type="radio" name="sizeBt" value="Bigger"> Bigger</label>
+        </fieldset>
+
+    </div>
+
+    <fieldset id="input">
+        <legend>Input Text</legend>
+        <textarea id="inputbox" rows="10" cols="80"></textarea>
+    </fieldset>
+    
+    <div id="validators">
+        <a href="https://validator.w3.org">
+            <img src="images/w3c-html-blue.png" alt="Validator 1" width="70">
+        </a>
+        <a href="https://jigsaw.w3.org/css-validator/">
+            <img src="images/w3c-css-blue.png" alt="Validator 2" width="70">
+        </a>
+        <a href="https://eslint.org/play/">
+            <img src="images/w3c-js-blue.png" alt="Validator 3" width="70">
+        </a>
+    </div>
+    
+
+
+</body>
