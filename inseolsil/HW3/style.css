@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Lato');
+
+body {
+  background-color: #202020;
+  color: white;
+  font-family: "Lato", sans-serif;
+}
+
+button, select {
+  font-family: "Lato", sans-serif;
+}
+
+button, textarea {
+  color: white;
+}
+
+h1, h2, legend {
+  text-align: center;
+}
+
+h1 {
+  margin: 30px auto;
+  font-size: 28pt;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 3px 3px #d92b6f, -3px -3px #047ab9;
+  animation: glitch 1s;
+}
+
+legend {
+  padding: 0 16pt;
+  font-size: 16pt;
+}
+
+button, strong, textarea, #result-area {
+  font-size: 14pt;
+}
+
+strong {
+  line-height: 26pt;
+}
+
+select {
+  padding: 2pt;
+  margin: 0 14pt;
+  font-size: 12pt;
+}
+
+button, fieldset, select, textarea, #result {
+  border-radius: 5pt;
+}
+
+fieldset {
+  width: 80%;
+  padding: 7pt 14pt;
+  border: 1.5pt solid white;
+  margin: 14pt auto;
+}
+
+textarea {
+  width: 100%;
+  padding: 7pt;
+  border: 2px solid #101010;
+  background-color: #101010;
+  resize: none;
+  outline: none;
+  transition: border-color 0.5s;
+}
+
+textarea:focus {
+  border-color: #047ab9;
+}
+
+#result {
+  width: 80%;
+  padding: 7pt;
+  min-height: 20px;
+  margin: 0 auto;
+  background-color: #101010;
+}
+
+button, select {
+  border: none;
+}
+
+button {
+  min-width: 150px;
+  padding: 5px;
+  margin: 5px 0;
+  background-color: #047ab9;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #d92b6f;
+}
+
+h2, p {
+  animation: fade-in-up 0.5s;
+  animation-fill-mode: both;
+}
+
+p {
+  animation-delay: 0.2s;
+  margin: 0;
+}
+
+@keyframes glitch {
+  0% {
+    opacity: 0;
+    text-shadow: none;
+  }
+  15% {
+    text-shadow: 1px 1px #d92b6f, -1px -1px #047ab9;
+  }
+  35% {
+    text-shadow: 10px 10px #047ab9, -10px -10px #d92b6f;
+  }
+  65% {
+    text-shadow: 1px 1px #d92b6f, -1px -1px #047ab9;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 3px 3px #d92b6f, -3px -3px #047ab9;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(8pt);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.smallFont {
+    font-size: 12pt;
+}
+  
+.bigFont {
+    font-size: 24pt;
+}
+  
