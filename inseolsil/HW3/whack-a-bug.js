@@ -1,68 +1,103 @@
 "use strict";
 (function() {
 
+  let gameTimerId = null;
+  let spawnTimerId = null;
+  const GAME_LENGTH = 60;
+  const BUG_IMG = "bug.png";
+  const BUG_WHACKED = "bugcut.png";
+  const BUG_CONTAINER_WIDTH = 1200;
+  const BUG_CONTAINER_HEIGHT = 600;
+  const BUG_SIZE = 75;
+
   window.addEventListener("load", init);
 
   function init() {
-    // STEP 1: Hook up the event listeners.
     id("start").addEventListener("click", startGame);
-    let bugs = qsa("#bug-container img");
-    for (let bug of bugs) {
-      bug.addEventListener("click", whackBug);
-    }
   }
 
-  /**
-   * Reveals the game view, hides some of the bugs, and starts the game.
-   * On repeat games, the score is reset and the bugs are unwhacked.
-   */
   function startGame() {
-    // alert("start game");
-    // STEP 2: Reveal the game view when the game starts.
+    stopGame();
     id("game").classList.remove("hidden");
 
-    // STEP 3: Make it so each bug has a 25% chance of being hidden on the page.
-    id("score").textContent = '0';
+    let spawnRate = parseInt(id("spawn-rate").value);
+    let spawnCount = parseInt(id("spawn-count").value);
+    let despawnRate = parseInt(id("despawn-rate").value);
 
-    let bugs = qsa("#bug-container img");
-    
-    for (let bug of bugs) {
-        bug.src = "bug.png"; 
-        bug.classList.remove("whacked");
-        bug.classList.add("unwhacked");
+    if (!spawnRate || !spawnCount || !despawnRate) {
+        id("error").textContent = "Some parameters are not filled in!";
+        id("game").classList.add("hidden");
+        return;
+    } else if (spawnRate <= 0 || spawnCount <= 0 || despawnRate <= 0) {
+        id("error").textContent = "Some parameters are 0 or less!";
+        id("game").classList.add("hidden");
+        return;
+    }
 
-        bug.removeEventListener("click", whackBug);
-        bug.addEventListener("click", whackBug);
+    id("score").textContent = "0";
+    id("timer").textContent = "60";
 
-        if (Math.random() < 0.25) {
-          bug.classList.add("hidden");
-        } 
-        else {
-          bug.classList.remove("hidden");
-        }
+    clearInterval(gameTimerId);     
+    gameTimerId = setInterval(decrementGameTimer, 1000); 
+
+    clearInterval(spawnTimerId);    
+    spawnTimerId = setInterval(spawnBugs, spawnRate); 
+}
+
+  function decrementGameTimer() {
+    let timerElement = id("timer");
+    let timeRemaining = parseInt(timerElement.textContent);
+
+    if (timeRemaining > 0) {
+      timerElement.textContent = timeRemaining - 1;
+    } 
+    else {
+      stopGame();
     }
   }
 
-  /**
-   * Whacks the clicked bug and increments the score. 
-   * The bug cannot be whacked again afterwards.
-   */
-  function whackBug() {
-    // alert("whackBug");
-    // STEP 4: When a bug is clicked, change it to the whacked image and increment the score.
-    if (!this.classList.contains("whacked")) {
-        this.src = "bugcut.png";
-    }
+  function spawnBugs() {
+    const container = id("bug-container");
+    const spawnCount = parseInt(id("spawn-count").value);
+    const despawnRate = parseInt(id("despawn-rate").value);
 
-    let totalScore = id("score");
-    let currentScore = parseInt(totalScore.textContent);
-    totalScore.textContent = currentScore + 1;
-    
-    this.classList.remove("unwhacked");
-    this.classList.add("whacked");
-  
-    // STEP 5: Make it so the bug cannot be whacked again after being whacked once.
-    this.removeEventListener("click", whackBug);
+    for (let i = 0; i < spawnCount; i++) {
+      const bug = document.createElement("img");
+      bug.src = BUG_IMG;
+      bug.className = "bug";
+      bug.style.position = 'absolute';
+      bug.addEventListener("click", whackBug);
+
+      const x = Math.random() * (BUG_CONTAINER_WIDTH - BUG_SIZE);
+      const y = Math.random() * (BUG_CONTAINER_HEIGHT - BUG_SIZE);
+      bug.style.left = x + "px";
+      bug.style.top = y + "px";
+
+      container.appendChild(bug);
+
+      setTimeout(() => {
+        if (bug.parentNode) {
+          bug.parentNode.removeChild(bug);
+        }
+      }, despawnRate);
+    }
+  }
+
+  function stopGame() {
+    clearInterval(gameTimerId); 
+    clearInterval(spawnTimerId);
+    id("game").classList.add("hidden"); 
+    id("bug-container").innerHTML = "";
+  }
+
+  function whackBug() {
+    if (!this.classList.contains("whacked")) {
+      this.classList.add("whacked");
+      this.src = BUG_WHACKED;
+      let score = id("score");
+
+      score.textContent = parseInt(score.textContent) + 1;
+    }
   }
 
   /* --- HELPER FUNCTIONS --- */
@@ -74,24 +109,6 @@
    */
   function id(name) {
     return document.getElementById(name);
-  }
-
-  /**
-   * Returns the first element that matches the given CSS selector.
-   * @param {string} query - CSS query selector.
-   * @returns {object} - The first DOM object matching the query.
-   */
-  function qs(query) {
-    return document.querySelector(query);
-  }
-
-  /**
-   * Returns an array of elements matching the given query.
-   * @param {string} query - CSS query selector.
-   * @returns {array} - Array of DOM objects matching the given query.
-   */
-  function qsa(query) {
-    return document.querySelectorAll(query);
   }
 
 })();

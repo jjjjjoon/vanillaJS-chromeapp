@@ -1,42 +1,28 @@
 "use strict";
 (function() {
-  // TODO: introduce any module global variable(s) necessary here
   
   window.addEventListener('load', init);
 
-  /**
-   * initiates page upon load
-   */
   function init() {
-    // part A
-    // TODO: when the page loads, apply a style to the #cookie-header <h2> that sets the text color to hex value #f7f16d 
-    id("cookie-header").style.color = "#f7f16d"; // Big Bird Yellow: Set the color of cookie-header
+    id("cookie-header").style.color = "#f7f16d"; 
 
-    // part B
-    countCookies(); // Count Chocula: Count and display the number of cookies
 
-    // part C
-    eatTheCookies(); // Cookie Monster Hungry: Remove a cookie every 2 seconds
+    countCookies(); 
+    eatTheCookies(); 
   }
 
-  // part B
-  // TODO: when the page loads, you find all of the cookie list items in the cookie-jar, count them, 
-  // and set the text of the #cookie-count <p> to be: < # of cookies>! 
-  // There are <# cookies> in cookie(s) in the cookie jar! (Replace '<# of cookies>' with the correct number).
   function countCookies() {
     let cookies = qsa("#cookie-jar .cookie");
     let cookieCount = cookies.length;
     id("cookie-count").textContent = `${cookieCount}! There are ${cookieCount} cookie(s) in the cookie jar!`;
   }
 
-  // part C
-  // TODO: remove the last cookie in Whitaker's cookie jar every 2 seconds.
   function eatTheCookies() {
     setInterval(() => {
       let cookies = qsa("#cookie-jar .cookie");
       if (cookies.length > 0) {
-        cookies[cookies.length - 1].remove(); // Remove the last cookie from the jar
-        countCookies(); // Update the cookie count after removal
+        cookies[cookies.length - 1].remove();
+        countCookies(); 
       }
     }, 2000);
   }

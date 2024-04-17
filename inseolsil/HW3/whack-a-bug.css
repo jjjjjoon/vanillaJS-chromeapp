@@ -26,6 +26,7 @@ button {
   border-radius: 1em;
   height: 2.5em;
   width: 5em;
+  margin-bottom: 1em;
 }
 
 button, p {
@@ -53,29 +54,38 @@ footer p {
   font-size: 1em;
 }
 
+#error {
+  color: red;
+}
+
 #game {
   border-radius: 3em;
+}
+
+#game, fieldset {
+  width: -moz-max-content;
+  width: -webkit-max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#game p {
+  margin: 0;
 }
 
 #bug-container {
   display: flex;
   justify-content: space-evenly;
   flex-flow: row wrap;
+  height: 600px;
+  width: 1200px;
+  position: relative; 
 }
 
-#bug-container img:nth-of-type(2n) {
-  width: 5em;
-  height: 5em;
-}
-
-#bug-container img:nth-of-type(2n+1) {
-  width: 15em;
-  height: 15em;
-}
-
-#bug-container img:nth-of-type(3n) {
-  width: 10em;
-  height: 10em;
+#bug-container img {
+  width: 75px;
+  height: 75px;
+  position: absolute;
 }
 
 .hidden {
