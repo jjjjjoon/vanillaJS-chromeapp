@@ -1,10 +1,9 @@
 /*
-* Name: ChatGPT
+* Name: Moon JaeJoon
 * Date: April 29, 2024
 * Section: AI 6068
 *
-* This JavaScript file adds interactivity to the webpage by allowing users to add
-* and remove tasks from a to-do list.
+* 웹페이지 안에서 todolist를 추가하고 제거할 수 있게 하기
 */
 
 /**
